@@ -1,39 +1,27 @@
-State,Zip Code Count
-Alabama,2
-Arizona,2
+State,Zipcode_Count
+Alabama,4
 Arkansas,4
-California,9
-Colorado,4
-Florida,11
+Florida,7
 Georgia,5
-Hawaii,1
-Idaho,2
-Illinois,9
+Illinois,7
 Indiana,5
-Iowa,7
-Kansas,3
-Kentucky,5
-Louisiana,3
-Maryland,3
+Iowa,5
+Kansas,4
+Kentucky,2
+Louisiana,4
+Maryland,4
 Michigan,7
-Minnesota,8
-Mississippi,4
-Missouri,10
-Nebraska,5
-Nevada,2
-New Mexico,1
-North Carolina,5
+Minnesota,6
+Mississippi,3
+Missouri,8
+Montana,4
+Nebraska,3
+North Carolina,4
 North Dakota,3
-Ohio,8
-Oklahoma,5
-Oregon,4
+Ohio,5
 South Carolina,3
 South Dakota,4
 Tennessee,6
-Texas,21
-Utah,3
-Virginia,6
-Washington,2
-West Virginia,8
+Virginia,7
+West Virginia,6
 Wisconsin,5
-Wyoming,1
