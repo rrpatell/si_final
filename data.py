@@ -5,6 +5,7 @@ import csv
 import matplotlib
 import matplotlib.pyplot as plt
 import random
+import numpy as np
 
 def create_output(cur):
     cur.execute('''SELECT Cities.id, state FROM Cities JOIN States ON States.id = Cities.id''')
@@ -41,12 +42,45 @@ def main():
         state_list.append(i[0])
         count_list.append(i[1])
 
-    plt.bar(state_list[:10], count_list[:10], color ='maroon', width = 0.4)
-    plt.xlabel("States")
-    plt.ylabel("Number of Zip Codes")
-    plt.xticks(rotation=90)
-    plt.title("Ten Most Common States with Zip Codes between 20588-98300")
-    plt.savefig('visual1.png', bbox_inches="tight")
+    cur.execute('SELECT state, ROUND(AVG(ozone_levels),2) FROM Ozone JOIN StatesForAir on state_id = StatesForAir.id GROUP BY state')
+    collected_data = cur.fetchall()
+    dir = os.path.dirname(__file__)
+    outFile = open(os.path.join(dir, 'calcByState.csv'), 'w')
+    csv_writer = csv.writer(outFile, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+    title = ['State', 'Avg Ozone Levels']
+    csv_writer.writerow(title)
+    for row in collected_data:
+        csv_writer.writerow([row[0], row[1]])
+    outFile.close()
+
+    i=np.argsort(state_list[:10])
+    collected_data = np.asarray(collected_data)
+    count_list = np.asarray(count_list[:10])
+    state_list = sorted(state_list[:10])
+
+    weather_list = []
+    for i in collected_data:
+        weather_list.append(i[1])
+
+    fig, ax1 = plt.subplots()
+
+    color = 'tab:red'
+    ax1.set_xlabel('States')
+    ax1.set_ylabel('Number of Zip Codes', color=color)
+    ax1.plot(state_list, count_list, 'go', color=color)
+    ax1.tick_params(axis='y', labelcolor=color)
+
+    ax2 = ax1.twinx() 
+
+    color = 'tab:blue'
+    ax2.set_ylabel('Ozone Concentration (in μg/m^3)', color=color) 
+    ax2.plot(state_list, weather_list, 'go', color=color)
+    ax2.tick_params(axis='y', labelcolor=color)
+    ax1.set_xticklabels(state_list, rotation=90)
+
+    fig.tight_layout() 
+    plt.title("Ten Most Common States with Zip Codes between 20588-98300 and their Average Ozone Concentration")
+    fig.savefig('visual1.png', bbox_inches="tight")
 
 if __name__ == "__main__":
     main()
