@@ -41,8 +41,12 @@ def main():
         state_list.append(i[0])
         count_list.append(i[1])
 
-    plt.pie(count_list[:10], labels = state_list[:10], autopct='%1.1f%%')
-    plt.savefig('visual1.png')
+    plt.bar(state_list[:10], count_list[:10], color ='maroon', width = 0.4)
+    plt.xlabel("States")
+    plt.ylabel("Number of Zip Codes")
+    plt.xticks(rotation=90)
+    plt.title("Ten Most Common States with Zip Codes between 20588-98300")
+    plt.savefig('visual1.png', bbox_inches="tight")
 
 if __name__ == "__main__":
     main()

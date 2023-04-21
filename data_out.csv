@@ -1,8 +1,13 @@
 State,Zipcode_Count
 Alabama,4
+Arizona,1
 Arkansas,4
+California,11
+Colorado,4
 Florida,7
 Georgia,5
+Hawaii,1
+Idaho,1
 Illinois,7
 Indiana,5
 Iowa,5
@@ -16,12 +21,20 @@ Mississippi,3
 Missouri,8
 Montana,4
 Nebraska,3
+Nevada,1
+New Mexico,2
 North Carolina,4
 North Dakota,3
 Ohio,5
+Oklahoma,4
+Oregon,3
 South Carolina,3
 South Dakota,4
 Tennessee,6
+Texas,14
 Virginia,7
+Washington,1
 West Virginia,6
 Wisconsin,5
+Wyoming,1
+unknown,1
