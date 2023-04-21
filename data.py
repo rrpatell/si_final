@@ -60,7 +60,7 @@ def main():
 
     weather_list = []
     for i in collected_data:
-        weather_list.append(i[1])
+        weather_list.append(float((i[1])))
 
     fig, ax1 = plt.subplots()
 
@@ -73,12 +73,12 @@ def main():
     ax2 = ax1.twinx() 
 
     color = 'tab:blue'
+    ax2.set(ylim=(0, 150))
     ax2.set_ylabel('Ozone Concentration (in μg/m^3)', color=color) 
     ax2.plot(state_list, weather_list, 'go', color=color)
-    ax2.tick_params(axis='y', labelcolor=color)
+    ax2.tick_params(axis='y', labelcolor=color, bottom=False)
     ax1.set_xticklabels(state_list, rotation=90)
 
-    fig.tight_layout() 
     plt.title("Ten Most Common States with Zip Codes between 20588-98300 and their Average Ozone Concentration")
     fig.savefig('visual1.png', bbox_inches="tight")
 
